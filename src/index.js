@@ -18,21 +18,21 @@ const container = document.getElementById('container');
 const indexArr = arrayList.map((element) => element.index);
 
 for (let i = 0; i <= Math.max(...indexArr); i += 1) {
-  arrayList.forEach((element) => {
-    if (element.index === i) {
+  for (let j = 0; j < arrayList.length; j += 1) {
+    if (arrayList[j].index === i) {
       taskList += `
-      <li>
-        <span>
-          <input type="checkbox">
-          <label for="#">
-          <i class="fa fa-check hide"></i>
-          ${element.description}</label>
-        </span>
-        <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-      </li>
-      `;
+        <li>
+          <span>
+            <input type="checkbox">
+            <label for="#">
+            <i class="fa fa-check hide"></i>
+            ${arrayList[j].description}</label>
+          </span>
+          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+        </li>
+        `;
     }
-  });
+  }
 }
 
 container.innerHTML = taskList;
