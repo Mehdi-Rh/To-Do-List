@@ -6,20 +6,21 @@ const arrayList = [
   {
     description: 'Wash the dishes',
     completed: false,
-    index: 0,
+    index: 10,
   },
   {
     description: 'Complete To do List Project',
     completed: false,
-    index: 1,
+    index: 5,
   },
 ];
 
 let taskList = '';
 const container = document.getElementById('container');
+const indexArr = arrayList.map(element => element.index)
 
-for (let i = 0; i < arrayList.length; i+=1) {
-  for (const element of arrayList) {
+for (let i = 0; i <= Math.max(...indexArr); i += 1) {
+  arrayList.forEach(element => {
     if (element.index === i) {
       taskList += `
       <li>
@@ -33,7 +34,8 @@ for (let i = 0; i < arrayList.length; i+=1) {
       </li>
       `;
     }
-  }
+  })   
 }
+
 
 container.innerHTML = taskList;
