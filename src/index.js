@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import printMe from './print.js';
+// import _ from 'lodash';
+// import printMe from './print.js';
 import './style.css';
 
 const arrayList = [
@@ -18,7 +18,7 @@ const arrayList = [
 let taskList = '';
 const container = document.getElementById('container');
 
-for (let i = 0; i < arrayList.length; i++) {
+for (let i = 0; i < arrayList.length; i+=1) {
   for (const element of arrayList) {
     if (element.index === i) {
       taskList += `
