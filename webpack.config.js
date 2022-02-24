@@ -1,25 +1,25 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
- module.exports = {
+module.exports = {
   mode: 'development',
-   entry: {
-     index: './src/index.js',
-     print: './src/print.js',
-   },
+  entry: {
+    index: './src/index.js',
+    print: './src/print.js',
+  },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
   ],
   devServer: {
     static: './dist',
   },
-   output: {
-     filename: '[name].bundle.js',
-     path: path.resolve(__dirname, 'dist'),
-   },
-   module: {
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+  },
+  module: {
     rules: [
       {
         test: /\.css$/i,
@@ -27,4 +27,4 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
       },
     ],
   },
- };
+};
