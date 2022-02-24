@@ -1,5 +1,3 @@
-// import _ from 'lodash';
-// import printMe from './print.js';
 import './style.css';
 
 const arrayList = [
@@ -17,10 +15,10 @@ const arrayList = [
 
 let taskList = '';
 const container = document.getElementById('container');
-const indexArr = arrayList.map(element => element.index)
+const indexArr = arrayList.map((element) => element.index);
 
 for (let i = 0; i <= Math.max(...indexArr); i += 1) {
-  arrayList.forEach(element => {
+  arrayList.forEach((element) => {
     if (element.index === i) {
       taskList += `
       <li>
@@ -34,8 +32,7 @@ for (let i = 0; i <= Math.max(...indexArr); i += 1) {
       </li>
       `;
     }
-  })   
+  });
 }
-
 
 container.innerHTML = taskList;
