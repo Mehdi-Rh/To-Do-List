@@ -1,4 +1,5 @@
 import './style.css';
+// import arrayList from "src/functionalities.js"
 
 const arrayList = [
   {
@@ -13,26 +14,31 @@ const arrayList = [
   },
 ];
 
-let taskList = '';
-const container = document.getElementById('container');
+const containerElement = document.getElementById('container');
 const indexArr = arrayList.map((element) => element.index);
+let taskList = '';
 
-for (let i = 0; i <= Math.max(...indexArr); i += 1) {
-  for (let j = 0; j < arrayList.length; j += 1) {
-    if (arrayList[j].index === i) {
-      taskList += `
-        <li>
-          <span>
-            <input type="checkbox">
-            <label for="#">
-            <i class="fa fa-check hide"></i>
-            ${arrayList[j].description}</label>
-          </span>
-          <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-        </li>
-        `;
+const showOrderedList = (container, objects, index, tasks) => {
+  for (let i = 0; i <= Math.max(...index); i += 1) {
+    for (let j = 0; j < objects.length; j += 1) {
+      if (objects[j].index === i) {
+        tasks += `
+          <li>
+            <span>
+              <input type="checkbox">
+              <label for="#">
+              <i class="fa fa-check hide"></i>
+              ${objects[j].description}</label>
+            </span>
+            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+          </li>
+          `;
+      }
     }
   }
+  container.innerHTML = tasks;
 }
 
-container.innerHTML = taskList;
+showOrderedList(containerElement, arrayList, indexArr, taskList)
+
+
