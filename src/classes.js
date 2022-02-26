@@ -27,13 +27,13 @@ export default class ToDo {
   }
 
   updateTask(paragraph, index) {
-    let update = JSON.parse(localStorage.getItem('taskInfo'));
+    const update = JSON.parse(localStorage.getItem('taskInfo'));
     update[index].description = paragraph.innerText;
     localStorage.setItem('taskInfo', JSON.stringify(update));
   }
 
   removeTask(removeIndex) {
-    let selection = ToDo.task; 
+    let selection = ToDo.task;
     selection = selection.splice(removeIndex, 1);
     localStorage.setItem('taskInfo', JSON.stringify(selection));
   }

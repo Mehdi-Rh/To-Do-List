@@ -6,8 +6,7 @@ const input = document.querySelector('#add');
 
 const clear = document.querySelector('#clear');
 const checkbox = document.getElementsByClassName('checkbox');
-var taskBox = document.getElementsByClassName('task');
-
+const taskBox = document.getElementsByClassName('task');
 
 const taskList = new ToDo();
 ToDo.displayTask();
@@ -17,12 +16,11 @@ addBtn.addEventListener('click', (event) => {
   if (input.value.length > 0) {
     taskList.description = input.value;
     taskList.addTask();
-
   }
-  document.location.reload(true)
+  document.location.reload(true);
   ToDo.displayTask();
   input.value = '';
-  console.log(taskBox)
+  console.log(taskBox);
 });
 
 clear.addEventListener('click', (event) => {
@@ -34,28 +32,20 @@ clear.addEventListener('click', (event) => {
     }
   }
   taskList.setIndex();
-  document.location.reload(true)
+  document.location.reload(true);
   ToDo.displayTask();
-  console.log(taskBox)
-
+  console.log(taskBox);
 });
 
 if (taskBox.length > 0) {
   for (let i = 0; i < taskBox.length; i++) {
     taskBox[i].addEventListener('keypress', (event) => {
-      if (event.key === 'Enter') {      
+      if (event.key === 'Enter') {
         event.preventDefault();
         taskList.updateTask(taskBox[i], i);
-        document.location.reload(true)
+        document.location.reload(true);
         ToDo.displayTask();
       }
     });
   }
 }
-
-
-
-
-
-
-
