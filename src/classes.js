@@ -1,27 +1,26 @@
 const containerElement = document.getElementById('container');
 
-export default class ToDo  {
+export default class ToDo {
   constructor(description) {
-    this.description = description,
-    this.completed = false
-  };
+    this.description = description;
+    this.completed = false;
+  }
 
   addTask() {
     if (ToDo.task.length === 0) {
       this.index = 0;
     } else {
-      let indexArr = ToDo.task.map((element) => element.index);
-      let maxIndex = Math.max(...indexArr)
+      const indexArr = ToDo.task.map((element) => element.index);
+      const maxIndex = Math.max(...indexArr);
       this.index = maxIndex + 1;
     }
-    ToDo.task.push(this)
+    ToDo.task.push(this);
     localStorage.setItem('taskInfo', JSON.stringify(ToDo.task));
-
-  };
+  }
 
   setIndex() {
-    let taskNewIndex = ToDo.task;
-    for (let i = 0; i <  taskNewIndex.length; i++){
+    const taskNewIndex = ToDo.task;
+    for (let i = 0; i < taskNewIndex.length; i++) {
       taskNewIndex[i].index = i;
     }
     localStorage.setItem('taskInfo', JSON.stringify(taskNewIndex));
@@ -35,25 +34,16 @@ export default class ToDo  {
 
   removeTask(removeIndex) {
     let selection = ToDo.task;
-    selection = selection.splice(removeIndex, 1)
-  };
+    selection = selection.splice(removeIndex, 1);
+  }
 
   static displayTask() {
     let tasks = '';
-    //test ************
-          let a = JSON.parse(localStorage.getItem('taskInfo'));
-          console.log("displayTask 1");
-          console.log(a);
-
-
-
     ToDo.task = JSON.parse(localStorage.getItem('taskInfo'));
-    console.log("displayTask 2");
-    console.log(ToDo.task);
     if (ToDo.task === null) {
-      ToDo.task = []
+      ToDo.task = [];
     } else {
-      ToDo.task.forEach(element => {
+      ToDo.task.forEach((element) => {
         tasks += `
             <li>
               <span>
@@ -69,4 +59,3 @@ export default class ToDo  {
     containerElement.innerHTML = tasks;
   }
 }
-
