@@ -19,20 +19,23 @@ export default class ToDo {
   }
 
   setIndex() {
+    this.completed = false;
     const taskNewIndex = ToDo.task;
-    for (let i = 0; i < taskNewIndex.length; i++) {
+    for (let i = 0; i < taskNewIndex.length; i += 1) {
       taskNewIndex[i].index = i;
     }
     localStorage.setItem('taskInfo', JSON.stringify(taskNewIndex));
   }
 
   updateTask(paragraph, index) {
+    this.completed = false;
     const update = JSON.parse(localStorage.getItem('taskInfo'));
     update[index].description = paragraph.innerText;
     localStorage.setItem('taskInfo', JSON.stringify(update));
   }
 
   removeTask(removeIndex) {
+    this.completed = false;
     let selection = ToDo.task;
     selection = selection.splice(removeIndex, 1);
     localStorage.setItem('taskInfo', JSON.stringify(selection));

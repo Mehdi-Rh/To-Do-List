@@ -20,13 +20,12 @@ addBtn.addEventListener('click', (event) => {
   document.location.reload(true);
   ToDo.displayTask();
   input.value = '';
-  console.log(taskBox);
 });
 
 clear.addEventListener('click', (event) => {
   event.preventDefault();
-  for (let i = checkbox.length - 1; i >= 0; i--) {
-    if (checkbox[i].checked == true) {
+  for (let i = checkbox.length - 1; i >= 0; i -= 1) {
+    if (checkbox[i].checked === true) {
       checkbox[i].parentElement.parentElement.remove();
       taskList.removeTask(i);
     }
@@ -34,11 +33,10 @@ clear.addEventListener('click', (event) => {
   taskList.setIndex();
   document.location.reload(true);
   ToDo.displayTask();
-  console.log(taskBox);
 });
 
 if (taskBox.length > 0) {
-  for (let i = 0; i < taskBox.length; i++) {
+  for (let i = 0; i < taskBox.length; i += 1) {
     taskBox[i].addEventListener('keypress', (event) => {
       if (event.key === 'Enter') {
         event.preventDefault();
