@@ -18,13 +18,19 @@
                 Today's To Do
                 <i class="fas fa-sync-alt"></i>
             </li>
-            <li><input id="add" type="text" placeholder="Add to your list..."> <i class="fa fa-share"></i></li>
+            <li>
+                <form id="form">
+                    <input id="add" type="text" placeholder="Add to your list..." required> 
+                    <button id="addBtn" type="submit" ><i class="fa fa-share"></i></button>
+
+                </form>
+            </li>
         </ul>
 
         <ul id="container">
         </ul>
 
-        <button id="clear">
+        <button id="clear" type="submit">
             Clear all completed
         </button>
     </div>

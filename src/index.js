@@ -1,44 +1,56 @@
 import './style.css';
-// import arrayList from "src/functionalities.js"
+import ToDo from "./classes.js"
 
-const arrayList = [
-  {
-    description: 'Wash the dishes',
-    completed: false,
-    index: 10,
-  },
-  {
-    description: 'Complete To do List Project',
-    completed: false,
-    index: 5,
-  },
-];
 
-const containerElement = document.getElementById('container');
-const indexArr = arrayList.map((element) => element.index);
-let taskList = '';
+const addBtn = document.querySelector('#addBtn');
+const input = document.querySelector('#add');
 
-const showOrderedList = (container, objects, index, tasks) => {
-  for (let i = 0; i <= Math.max(...index); i += 1) {
-    for (let j = 0; j < objects.length; j += 1) {
-      if (objects[j].index === i) {
-        tasks += `
-          <li>
-            <span>
-              <input type="checkbox">
-              <label for="#">
-              <i class="fa fa-check hide"></i>
-              ${objects[j].description}</label>
-            </span>
-            <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
-          </li>
-          `;
-      }
+const clear = document.querySelector('#clear')
+const checkbox = document.getElementsByClassName('checkbox');
+
+
+var taskList = new ToDo();
+
+addBtn.addEventListener('click', () => {
+  event.preventDefault();
+  if (input.value.length > 0) {
+    // const newtask = new ToDo(input.value);
+    // newtask.addTask()
+    taskList.description = input.value
+    taskList.addTask()
+
+    ToDo.displayTask()
+    input.value = ''
+  }
+});
+
+clear.addEventListener('click', () => {
+  event.preventDefault();
+  const deleteTask = new ToDo(input.innerText);
+  for (let i = checkbox.length-1; i >= 0; i--) {
+    if (checkbox[i].checked == true) {
+      checkbox[i].parentElement.parentElement.remove()
+      // deleteTask.removeTask(i)
+      taskList.removeTask(i)
     }
   }
-  container.innerHTML = tasks;
-}
+  // deleteTask.setIndex()
+  taskList.setIndex()
+  ToDo.displayTask()
+});
 
-showOrderedList(containerElement, arrayList, indexArr, taskList)
+ToDo.displayTask();
 
+const taskBox = document.getElementsByClassName('task');
+if (taskBox.length > 0) {
+  for (let i = 0; i < taskBox.length; i++) {
+    taskBox[i].addEventListener('input', (e) => {
+      // if (e.key === 'Enter') {
+      //   event.preventDefault();
+      //   taskList.updateTask(taskBox[i], i)
+      // }
+        event.preventDefault();
+        taskList.updateTask(taskBox[i], i)
+    }); 
+}};
 
