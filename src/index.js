@@ -6,23 +6,27 @@ const input = document.querySelector('#add');
 
 const clear = document.querySelector('#clear');
 const checkbox = document.getElementsByClassName('checkbox');
+var taskBox = document.getElementsByClassName('task');
+
 
 const taskList = new ToDo();
+ToDo.displayTask();
 
-addBtn.addEventListener('click', () => {
+addBtn.addEventListener('click', (event) => {
   event.preventDefault();
   if (input.value.length > 0) {
     taskList.description = input.value;
     taskList.addTask();
 
-    ToDo.displayTask();
-    input.value = '';
   }
+  document.location.reload(true)
+  ToDo.displayTask();
+  input.value = '';
+  console.log(taskBox)
 });
 
-clear.addEventListener('click', () => {
+clear.addEventListener('click', (event) => {
   event.preventDefault();
-  const deleteTask = new ToDo(input.innerText);
   for (let i = checkbox.length - 1; i >= 0; i--) {
     if (checkbox[i].checked == true) {
       checkbox[i].parentElement.parentElement.remove();
@@ -30,17 +34,28 @@ clear.addEventListener('click', () => {
     }
   }
   taskList.setIndex();
+  document.location.reload(true)
   ToDo.displayTask();
+  console.log(taskBox)
+
 });
 
-ToDo.displayTask();
-
-const taskBox = document.getElementsByClassName('task');
 if (taskBox.length > 0) {
   for (let i = 0; i < taskBox.length; i++) {
-    taskBox[i].addEventListener('input', (e) => {
-      event.preventDefault();
-      taskList.updateTask(taskBox[i], i);
+    taskBox[i].addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {      
+        event.preventDefault();
+        taskList.updateTask(taskBox[i], i);
+        document.location.reload(true)
+        ToDo.displayTask();
+      }
     });
   }
 }
+
+
+
+
+
+
+
