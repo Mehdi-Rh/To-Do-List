@@ -49,13 +49,14 @@ export default class ToDo {
     } else {
       ToDo.task.forEach((element) => {
         tasks += `
-            <li>
-              <span>
+            <li class="task ${element.index}">
+              <span class="task ${element.index}">
                 <input type="checkbox" class="checkbox">
-                <label contenteditable="true" class="task" for="#">
+                <label contenteditable="true" class="task ${element.index}" for="#">
                 ${element.description}</label>
               </span>
-              <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+              <i class="fa fa-ellipsis-v to-hide" aria-hidden="true"></i>
+              <i class="fa fa-times delete-icon"></i>
             </li>
             `;
       });

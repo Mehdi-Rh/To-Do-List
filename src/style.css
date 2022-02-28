@@ -33,7 +33,7 @@ li span {
   width: 100%;
 }
 
-.task {
+label .task {
   width: 100%;
 }
 
@@ -53,7 +53,14 @@ input:focus,
   background-color: #fff;
 }
 
-#clear {
+.delete-icon {
+  display: none;
+}
+
+
+
+
+#clear-completed {
   padding: 1rem;
   width: 100%;
   border: none;
