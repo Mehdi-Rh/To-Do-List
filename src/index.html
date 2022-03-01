@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link
     rel="stylesheet"
     href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -18,13 +20,20 @@
                 Today's To Do
                 <i class="fas fa-sync-alt"></i>
             </li>
-            <li><input id="add" type="text" placeholder="Add to your list..."> <i class="fa fa-share"></i></li>
+            <li>
+                <form id="form">
+                    <input id="add" type="text" placeholder="Add to your list..." required> 
+                    <button id="addBtn" type="submit" ><i class="fa fa-share"></i></button>
+
+                </form>
+
+            </li>
         </ul>
 
         <ul id="container">
         </ul>
-
-        <button id="clear">
+        
+        <button id="clear-completed" type="submit">
             Clear all completed
         </button>
     </div>

@@ -21,16 +21,52 @@ li {
   justify-content: space-between;
 }
 
-#add {
-  border: 0;
+li span {
+  display: flex;
+  width: 100%;
+  height: 18px;
 }
 
-button {
+#form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+label .task {
+  width: 100%;
+}
+
+input:focus,
+.task:focus {
+  outline: none;
+}
+
+#add {
+  border-width: 0;
+  border: none;
+  height: 100%;
+}
+
+#addBtn {
+  border: 0;
+  background-color: #fff;
+}
+
+.delete-icon {
+  display: none;
+}
+
+#clear-completed {
   padding: 1rem;
   width: 100%;
   border: none;
 }
 
-.hide {
-  display: none;
+/* edit a task */
+.taskInput {
+  border: solid #fff;
+  width: 100%;
+  height: 18px;
+  padding: 0;
 }
