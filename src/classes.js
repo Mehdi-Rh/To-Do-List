@@ -1,4 +1,4 @@
-import { containerElement, checkbox } from './index.js';
+import { containerElement, checkbox } from './variables.js';
 
 export default class ToDo {
   constructor(description) {
@@ -14,6 +14,7 @@ export default class ToDo {
       const maxIndex = Math.max(...indexArr);
       this.index = maxIndex + 1;
     }
+
     ToDo.task.push(this);
     localStorage.setItem('taskInfo', JSON.stringify(ToDo.task));
   }
@@ -42,19 +43,21 @@ export default class ToDo {
   }
 
   setCompleted(completed, index) {
-    if (completed) { ToDo.task[index].completed = true; } else { ToDo.task[index].completed = false; }
+    this.completed = false;
+    if (completed) {
+      ToDo.task[index].completed = true;
+    } else {
+      ToDo.task[index].completed = false;
+    }
     localStorage.setItem('taskInfo', JSON.stringify(ToDo.task));
   }
 
   maintainCompleted(box) {
+    this.completed = false;
     const list = ToDo.task;
-    console.log(list.length);
     for (let i = 0; i < list.length; i += 1) {
-      console.log(list[i].completed);
-
       if (list[i].completed) {
         box[i].checked = true;
-        console.log('maitain completed');
       }
     }
   }

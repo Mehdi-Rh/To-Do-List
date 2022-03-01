@@ -1,17 +1,10 @@
 import './style.css';
+import {
+  checkbox, addBtn, input, clearCompleted, taskBox, deleteIcon, toHide,
+} from './variables.js';
 import ToDo from './classes.js';
 
-export const containerElement = document.getElementById('container');
-export const checkbox = document.getElementsByClassName('checkbox');
-
-const addBtn = document.querySelector('#addBtn');
-const input = document.querySelector('#add');
-const clearCompleted = document.querySelector('#clear-completed');
-const taskBox = document.getElementsByClassName('task');
-const deleteIcon = document.getElementsByClassName('delete-icon');
-const toHide = document.getElementsByClassName('to-hide');
 const taskList = new ToDo();
-
 taskList.displayTask();
 
 // Add task
@@ -70,12 +63,10 @@ document.addEventListener('click', (e) => {
       e.preventDefault();
       hideDisp(deleteIcon, toHide, i);
     }
-
     const deleteIndex = e.target.classList[1];
     hideDisp(toHide, deleteIcon, deleteIndex);
-  }
-  // Set completed or incompleted task
-  else if (e.target.classList.contains('checkbox')) {
+  } else if (e.target.classList.contains('checkbox')) {
+    // Set completed or incompleted task
     taskList.setCompleted(e.target.checked, index);
   } else {
     for (let i = 0; i < deleteIcon.length; i += 1) {
