@@ -1,17 +1,18 @@
 import './style.css';
 import ToDo from './classes.js';
 
+export const containerElement = document.getElementById('container');
+export const checkbox = document.getElementsByClassName('checkbox');
+
 const addBtn = document.querySelector('#addBtn');
 const input = document.querySelector('#add');
-
 const clearCompleted = document.querySelector('#clear-completed');
-const checkbox = document.getElementsByClassName('checkbox');
 const taskBox = document.getElementsByClassName('task');
-const deleteIcon = document.getElementsByClassName('delete-icon')
-const toHide = document.getElementsByClassName('to-hide')
-
+const deleteIcon = document.getElementsByClassName('delete-icon');
+const toHide = document.getElementsByClassName('to-hide');
 const taskList = new ToDo();
-ToDo.displayTask();
+
+taskList.displayTask();
 
 // Add task
 addBtn.addEventListener('click', (event) => {
@@ -53,39 +54,46 @@ if (taskBox.length > 0) {
   }
 }
 
-// Display delete icon
-
+/* ********* Display delete icon ********* */
+// function to show and hide delete icon
 const hideDisp = (itemToHide, itemToDisplay, index) => {
-  itemToHide[index].style.display = ('none')
-  itemToDisplay[index].style.display = ('block')  
-}
+  itemToHide[index].style.display = ('none');
+  itemToDisplay[index].style.display = ('block');
+};
+
+// Event to display delete icon
 document.addEventListener('click', (e) => {
-  if (e.target.classList.contains("task")) {
- 
-    for (let i = 0; i < deleteIcon.length; i +=1) {
-        console.log(2)
-        e.preventDefault();
-        hideDisp(deleteIcon, toHide, i)
-        // deleteIcon[i].style.display = ('none')
-        // toHide[i].style.display = ('block')  
-      }
-      const j = e.target.classList[1];
+  const index = e.target.classList[1];
 
-      hideDisp(toHide, deleteIcon, j)
-
-      // deleteIcon[j].style.display = ('block');
-      // toHide[j].style.display = ('none'); 
-    } else {
-      for (let i = 0; i < deleteIcon.length; i +=1) {
-        console.log(2)
-        e.preventDefault();
-        hideDisp(deleteIcon, toHide, i)
-
-        // deleteIcon[i].style.display = ('none')
-        // toHide[i].style.display = ('block')  
-      }
-      
-
+  if (e.target.classList.contains('task-delete')) {
+    for (let i = 0; i < deleteIcon.length; i += 1) {
+      e.preventDefault();
+      hideDisp(deleteIcon, toHide, i);
     }
-  })
 
+    const deleteIndex = e.target.classList[1];
+    hideDisp(toHide, deleteIcon, deleteIndex);
+  }
+  // Set completed or incompleted task
+  else if (e.target.classList.contains('checkbox')) {
+    taskList.setCompleted(e.target.checked, index);
+  } else {
+    for (let i = 0; i < deleteIcon.length; i += 1) {
+      e.preventDefault();
+      hideDisp(deleteIcon, toHide, i);
+    }
+  }
+});
+
+// Event to delete a task when clicking on delete icon
+
+for (let i = 0; i < deleteIcon.length; i += 1) {
+  const element = deleteIcon[i];
+  element.addEventListener('click', (e) => {
+    e.preventDefault();
+    element.parentElement.remove();
+    taskList.removeTask(i);
+    taskList.setIndex();
+    document.location.reload(true);
+  });
+}

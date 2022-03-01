@@ -1,4 +1,4 @@
-const containerElement = document.getElementById('container');
+import { containerElement, checkbox } from './index.js';
 
 export default class ToDo {
   constructor(description) {
@@ -41,7 +41,25 @@ export default class ToDo {
     localStorage.setItem('taskInfo', JSON.stringify(selection));
   }
 
-  static displayTask() {
+  setCompleted(completed, index) {
+    if (completed) { ToDo.task[index].completed = true; } else { ToDo.task[index].completed = false; }
+    localStorage.setItem('taskInfo', JSON.stringify(ToDo.task));
+  }
+
+  maintainCompleted(box) {
+    const list = ToDo.task;
+    console.log(list.length);
+    for (let i = 0; i < list.length; i += 1) {
+      console.log(list[i].completed);
+
+      if (list[i].completed) {
+        box[i].checked = true;
+        console.log('maitain completed');
+      }
+    }
+  }
+
+  displayTask() {
     let tasks = '';
     ToDo.task = JSON.parse(localStorage.getItem('taskInfo'));
     if (ToDo.task === null) {
@@ -49,10 +67,10 @@ export default class ToDo {
     } else {
       ToDo.task.forEach((element) => {
         tasks += `
-            <li class="task ${element.index}">
-              <span class="task ${element.index}">
-                <input type="checkbox" class="checkbox">
-                <label contenteditable="true" class="task ${element.index}" for="#">
+            <li class="task-delete ${element.index}">
+              <span class="task-delete ${element.index}">
+                <input type="checkbox" class="checkbox ${element.index}">
+                <label contenteditable="true" class="task task-delete ${element.index}" for="#">
                 ${element.description}</label>
               </span>
               <i class="fa fa-ellipsis-v to-hide" aria-hidden="true"></i>
@@ -61,6 +79,8 @@ export default class ToDo {
             `;
       });
     }
+
     containerElement.innerHTML = tasks;
+    this.maintainCompleted(checkbox);
   }
 }
