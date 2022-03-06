@@ -9,34 +9,27 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major languages : HTML, CSS, Javascript
+- Major languages : HTML, CSS, Javascript.
+- Other modules: npm, webpack
 
 ## Live Demo
 
 [Live Demo Link](https://mehdi-rh.github.io/To-Do-List/)
 
 
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
 ### Usage
+To build the project run :
+
+$ npm install <br>
+$ npm run build
 
 ### Run tests
 
 ### Deployment
 
+In development environment use the following command:
 
+$ npm run dev
 
 ## Authors
 
