@@ -20,7 +20,7 @@ Additional description about the project and its features.
 ### Usage
 To build the project run :
 
-$ npm install
+$ npm install <br>
 $ npm run build
 
 ### Run tests
