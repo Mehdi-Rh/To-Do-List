@@ -9,7 +9,8 @@ Additional description about the project and its features.
 
 ## Built With
 
-- Major languages : HTML, CSS, Javascript
+- Major languages : HTML, CSS, Javascript.
+- Other modules: npm, webpack
 
 ## Live Demo
 
@@ -24,19 +25,19 @@ Additional description about the project and its features.
 
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
-
-### Setup
-
-### Install
 
 ### Usage
+To build the project run :
+$ npm install
+$ npm run build
 
 ### Run tests
 
 ### Deployment
 
+In development environment use the following command:
 
+$ npm run dev
 
 ## Authors
 
