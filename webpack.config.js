@@ -16,7 +16,7 @@ module.exports = {
     static: './dist',
   },
   output: {
-    filename: '[name].bundle.js',
+    filename: 'index.bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
   module: {
@@ -28,3 +28,4 @@ module.exports = {
     ],
   },
 };
+
